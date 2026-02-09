@@ -3,9 +3,13 @@ import base64
 from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
 from fastapi.security import HTTPAuthorizationCredentials
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
 from openai import OpenAI
 from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer
 
+
+load_dotenv(".env.local")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize FastAPI app
 app = FastAPI()
 
@@ -23,7 +27,7 @@ clerk_config = ClerkConfig(jwks_url=os.getenv("CLERK_JWKS_URL"))
 clerk_guard = ClerkHTTPBearer(clerk_config)
 
 # OpenAI client
-client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+#client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 # File validation constants
 ALLOWED_EXTENSIONS = {'.jpg', '.jpeg', '.png', '.webp'}
