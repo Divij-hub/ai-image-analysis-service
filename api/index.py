@@ -9,6 +9,7 @@ from fastapi_clerk_auth import ClerkConfig, ClerkHTTPBearer
 
 
 load_dotenv(".env.local")
+
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 # Initialize FastAPI app
 app = FastAPI()
@@ -217,3 +218,7 @@ def check_usage(creds: HTTPAuthorizationCredentials = Depends(clerk_guard)):
 def root():
     """Root endpoint - redirects to health check"""
     return {"message": "AI Vision Service API", "health_endpoint": "/api/health"}
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
