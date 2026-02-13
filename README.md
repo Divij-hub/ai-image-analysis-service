@@ -60,6 +60,7 @@ Technologies Used:
         - Add environment variables to the Vercel project settings .
         - Deploy using the CLI: vercel --prod
 
+        - Deployement Link: https://ai-image-analysis-service.vercel.app/ 
 6. Known Limitations
 
     In-Memory Tracking: Usage tracking is stored in an in-memory dictionary, meaning data resets whenever the Vercel deployment cold-starts .
